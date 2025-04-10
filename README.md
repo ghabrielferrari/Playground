@@ -1,1 +1,1 @@
-Dice App in Swift
+Study - Dice App in Swift
