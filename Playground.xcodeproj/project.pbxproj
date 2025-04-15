@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		665610922DAE8135006893C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610912DAE8135006893C0 /* LoginView.swift */; };
+		665610942DAE85DF006893C0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610932DAE85DF006893C0 /* RegisterView.swift */; };
+		665610962DAE8864006893C0 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610952DAE8864006893C0 /* ResetPasswordView.swift */; };
 		668EB7F92DA8360D00A309B6 /* PlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */; };
 		668EB7FB2DA8360D00A309B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB7FA2DA8360D00A309B6 /* ContentView.swift */; };
 		668EB7FD2DA8360F00A309B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668EB7FC2DA8360F00A309B6 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		665610912DAE8135006893C0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		665610932DAE85DF006893C0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		665610952DAE8864006893C0 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		668EB7F52DA8360D00A309B6 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundApp.swift; sourceTree = "<group>"; };
 		668EB7FA2DA8360D00A309B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +59,9 @@
 			children = (
 				668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */,
 				668EB7FA2DA8360D00A309B6 /* ContentView.swift */,
+				665610912DAE8135006893C0 /* LoginView.swift */,
+				665610932DAE85DF006893C0 /* RegisterView.swift */,
+				665610952DAE8864006893C0 /* ResetPasswordView.swift */,
 				668EB7FC2DA8360F00A309B6 /* Assets.xcassets */,
 				668EB7FE2DA8360F00A309B6 /* Preview Content */,
 			);
@@ -137,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665610922DAE8135006893C0 /* LoginView.swift in Sources */,
+				665610942DAE85DF006893C0 /* RegisterView.swift in Sources */,
+				665610962DAE8864006893C0 /* ResetPasswordView.swift in Sources */,
 				668EB7FB2DA8360D00A309B6 /* ContentView.swift in Sources */,
 				668EB7F92DA8360D00A309B6 /* PlaygroundApp.swift in Sources */,
 			);
