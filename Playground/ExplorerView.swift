@@ -133,7 +133,7 @@ struct BookCard: View {
     
     var body: some View {
         VStack {
-            Image(book.title) // Substitua pela imagem real do livro
+            Image(book.title) // Substituir pela imagem real do livro
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 120, height: 180)
