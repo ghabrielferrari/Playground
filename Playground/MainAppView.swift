@@ -28,6 +28,10 @@ struct ProfileView: View {
 struct MainAppView: View {
     @State private var selectedTab: Tab = .explore
     
+    // Estado de login persistente
+    @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @AppStorage("userEmail") private var userEmail = ""
+    
     enum Tab {
         case summary
         case explore
@@ -62,5 +66,25 @@ struct MainAppView: View {
                 .tag(Tab.profile)
         }
         .accentColor(.pink)
+        .onAppear {
+            if !isLoggedIn {
+                print("Usuário não está logado. Redirecionando para LoginView.")
+            }
+            // Forçar logout temporário ao carregar a tela principal
+            //logout()
+        }
+    }
+    
+    // Função para fazer logout
+    private func logout() {
+        print("Iniciando logout...")
+        
+        // Resetar o estado de login
+        isLoggedIn = false
+        
+        // Limpar o email do usuário
+        userEmail = ""
+        
+        print("Logout concluído.")
     }
 }

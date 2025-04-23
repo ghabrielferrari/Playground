@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6601049B2DB90AF7000A8137 /* SignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601049A2DB90AF7000A8137 /* SignInWithApple.swift */; };
+		6601049D2DB90DDA000A8137 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601049C2DB90DDA000A8137 /* KeychainHelper.swift */; };
 		6611E1312DB122360012640D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611E1302DB122360012640D /* MapView.swift */; };
 		66298D492DB7D54E0021B745 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66298D482DB7D54E0021B745 /* MainAppView.swift */; };
 		665610922DAE8135006893C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610912DAE8135006893C0 /* LoginView.swift */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		660104992DB90A95000A8137 /* Playground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Playground.entitlements; sourceTree = "<group>"; };
+		6601049A2DB90AF7000A8137 /* SignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApple.swift; sourceTree = "<group>"; };
+		6601049C2DB90DDA000A8137 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		6611E1302DB122360012640D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6611E1322DB123370012640D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66298D482DB7D54E0021B745 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		668EB7F72DA8360D00A309B6 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				660104992DB90A95000A8137 /* Playground.entitlements */,
 				668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */,
 				66298D482DB7D54E0021B745 /* MainAppView.swift */,
 				665610912DAE8135006893C0 /* LoginView.swift */,
@@ -72,6 +78,8 @@
 				6611E1322DB123370012640D /* Info.plist */,
 				668EB7FC2DA8360F00A309B6 /* Assets.xcassets */,
 				668EB7FE2DA8360F00A309B6 /* Preview Content */,
+				6601049A2DB90AF7000A8137 /* SignInWithApple.swift */,
+				6601049C2DB90DDA000A8137 /* KeychainHelper.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -158,8 +166,10 @@
 				665610942DAE85DF006893C0 /* RegisterView.swift in Sources */,
 				66298D492DB7D54E0021B745 /* MainAppView.swift in Sources */,
 				6611E1312DB122360012640D /* MapView.swift in Sources */,
+				6601049D2DB90DDA000A8137 /* KeychainHelper.swift in Sources */,
 				665610962DAE8864006893C0 /* ResetPasswordView.swift in Sources */,
 				668EB7F92DA8360D00A309B6 /* PlaygroundApp.swift in Sources */,
+				6601049B2DB90AF7000A8137 /* SignInWithApple.swift in Sources */,
 				66CE34552DB7D18900B22680 /* ExplorerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,10 +298,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Playground/Playground.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Playground/Preview Content\"";
-				DEVELOPMENT_TEAM = 6G373HJQ2H;
+				DEVELOPMENT_TEAM = 4QUZ84UWG2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -317,10 +328,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Playground/Playground.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Playground/Preview Content\"";
-				DEVELOPMENT_TEAM = 6G373HJQ2H;
+				DEVELOPMENT_TEAM = 4QUZ84UWG2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

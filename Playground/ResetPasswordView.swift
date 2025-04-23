@@ -1,11 +1,19 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
+    @State private var username: String = ""
     @State private var currentPassword: String = ""
     @State private var newPassword: String = ""
     @State private var showCurrentPassword: Bool = false
     @State private var showNewPassword: Bool = false
-    @State private var saveNewPassword: Bool = true
+    @State private var saveNewPassword: Bool = true // Checkbox para salvar a nova senha
+    
+    // Estado para controlar o alerta de erro
+    @State private var showAlert = false
+    @State private var errorMessage = ""
+    
+    // Estado para apresentar a LoginView
+    @State private var showLoginView = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -22,6 +30,17 @@ struct ResetPasswordView: View {
             
             // Campos do formulário
             VStack(spacing: 16) {
+                // Nome de Usuário
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Nome de Usuário")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    
+                    TextField("Digite seu nome de usuário", text: $username)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                }
+                
                 // Senha Atual
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Senha Atual")
@@ -80,14 +99,13 @@ struct ResetPasswordView: View {
                         .font(.footnote)
                 }
                 .toggleStyle(CheckboxToggleStyle())
-                
             }
             
             Spacer()
             
             // Botão de Redefinir Senha
             Button(action: {
-                resetPassword()
+                validateAndResetPassword()
             }) {
                 Text("Redefinir Senha")
                     .frame(maxWidth: .infinity)
@@ -99,17 +117,74 @@ struct ResetPasswordView: View {
         }
         .padding(.horizontal, 24)
         .padding(.top, 32)
+        .alert(errorMessage, isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        .fullScreenCover(isPresented: $showLoginView) {
+            LoginView()
+        }
     }
     
-    private func resetPassword() {
-        print("Tentativa de redefinição de senha:")
-        print("Senha atual: \(currentPassword)")
-        print("Nova senha: \(newPassword)")
-        print("Salvar nova senha: \(saveNewPassword ? "Sim" : "Não")")
+    // Função para validar e redefinir a senha
+    private func validateAndResetPassword() {
+        // Verificar se todos os campos estão preenchidos
+        guard !username.isEmpty, !currentPassword.isEmpty, !newPassword.isEmpty else {
+            errorMessage = "Todos os campos são obrigatórios."
+            showAlert = true
+            return
+        }
         
-        // Validações adicionais podem ser incluídas aqui
-        if currentPassword == newPassword {
-            print("Erro: A nova senha deve ser diferente da senha atual")
+        // Carregar os dados do Keychain usando o nome de usuário como chave
+        if let userData = KeychainHelper.load(key: username),
+           var decodedUserData = try? JSONDecoder().decode([String: String].self, from: userData) {
+            let storedPassword = decodedUserData["password"] ?? ""
+            
+            // Validar a senha atual
+            guard currentPassword == storedPassword else {
+                errorMessage = "Erro: A senha atual está incorreta."
+                showAlert = true
+                return
+            }
+            
+            // Verificar se a nova senha é diferente da senha atual
+            guard currentPassword != newPassword else {
+                errorMessage = "Erro: A nova senha deve ser diferente da senha atual."
+                showAlert = true
+                return
+            }
+            
+            // Atualizar a senha no Keychain
+            decodedUserData["password"] = newPassword
+            if let updatedUserData = try? JSONEncoder().encode(decodedUserData) {
+                let success = KeychainHelper.save(key: username, data: updatedUserData)
+                if success {
+                    print("Senha redefinida com sucesso!")
+                    
+                    // Salvar a nova senha no AppStorage se a checkbox estiver marcada
+                    if saveNewPassword {
+                        let _ = UserDefaults.standard.set(newPassword, forKey: "savedPassword")
+                        let _ = UserDefaults.standard.set(username, forKey: "savedEmail")
+                    } else {
+                        // Limpar os dados salvos se a checkbox estiver desmarcada
+                        UserDefaults.standard.removeObject(forKey: "savedPassword")
+                        UserDefaults.standard.removeObject(forKey: "savedEmail")
+                    }
+                    
+                    // Limpar os campos após a redefinição
+                    username = ""
+                    currentPassword = ""
+                    newPassword = ""
+                    
+                    // Redirecionar para a tela de login
+                    showLoginView = true
+                } else {
+                    errorMessage = "Erro ao salvar a nova senha no Keychain."
+                    showAlert = true
+                }
+            }
+        } else {
+            errorMessage = "Erro: Nome de usuário não encontrado no Keychain."
+            showAlert = true
         }
     }
 }
