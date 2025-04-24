@@ -180,23 +180,23 @@ struct LoginView: View {
             showAlert = true
             return
         }
-        
+
         // Validar o formato do email
         guard isValidEmail(email) else {
             errorMessage = "O email inserido é inválido."
             showAlert = true
             return
         }
-        
+
         // Carregar dados do Keychain
         if let userData = KeychainHelper.load(key: email),
            let decodedUserData = try? JSONDecoder().decode([String: String].self, from: userData) {
             let storedPassword = decodedUserData["password"] ?? ""
-            
+
             // Verificar se a senha corresponde
             if password == storedPassword {
                 print("Login bem-sucedido!")
-                
+
                 // Salvar os dados se "Lembrar-me" estiver ativado
                 if rememberMe {
                     savedEmail = email
@@ -206,10 +206,10 @@ struct LoginView: View {
                     savedEmail = ""
                     savedPassword = ""
                 }
-                
+
                 // Atualiza o estado de login
                 isLoggedIn = true
-                
+
                 // Forçar a atualização da interface (opcional)
                 DispatchQueue.main.async {
                     self.isLoggedIn = true
