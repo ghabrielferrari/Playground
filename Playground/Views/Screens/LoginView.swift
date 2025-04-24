@@ -209,6 +209,11 @@ struct LoginView: View {
                 
                 // Atualiza o estado de login
                 isLoggedIn = true
+                
+                // Forçar a atualização da interface (opcional)
+                DispatchQueue.main.async {
+                    self.isLoggedIn = true
+                }
             } else {
                 errorMessage = "Senha incorreta."
                 showAlert = true

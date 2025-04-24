@@ -133,40 +133,40 @@ struct RegisterView: View {
             return
         }
         
-        // Salvar no Keychain
-        let userData: [String: String] = ["username": username, "password": password]
-        if let userDataEncoded = try? JSONEncoder().encode(userData) {
-            let success = KeychainHelper.save(key: email, data: userDataEncoded)
-            if success {
-                print("Usuário registrado com sucesso!")
-                
-                // Salvar os dados de entrada se a checkbox estiver marcada
-                if saveLoginDetails {
-                    savedEmail = email
-                    savedPassword = password
+        // Salvar no Keychain usando o EMAIL como chave
+            let userData: [String: String] = ["username": username, "password": password]
+            if let userDataEncoded = try? JSONEncoder().encode(userData) {
+                let success = KeychainHelper.save(key: email, data: userDataEncoded) // Usar o email como chave
+                if success {
+                    print("Usuário registrado com sucesso!")
+                    
+                    // Salvar os dados de entrada se a checkbox estiver marcada
+                    if saveLoginDetails {
+                        savedEmail = email
+                        savedPassword = password
+                    } else {
+                        // Limpar os dados salvos se a checkbox estiver desmarcada
+                        savedEmail = ""
+                        savedPassword = ""
+                    }
+                    
+                    // Limpar os campos após o registro
+                    username = ""
+                    email = ""
+                    password = ""
+                    confirmPassword = ""
+                    
+                    // Apresentar a tela de login
+                    showLoginView = true
                 } else {
-                    // Limpar os dados salvos se a checkbox estiver desmarcada
-                    savedEmail = ""
-                    savedPassword = ""
+                    errorMessage = "Erro ao salvar os dados do usuário."
+                    showAlert = true
                 }
-                
-                // Limpar os campos após o registro
-                username = ""
-                email = ""
-                password = ""
-                confirmPassword = ""
-                
-                // Apresentar a tela de login
-                showLoginView = true
             } else {
-                errorMessage = "Erro ao salvar os dados do usuário."
+                errorMessage = "Erro ao processar os dados do usuário."
                 showAlert = true
             }
-        } else {
-            errorMessage = "Erro ao processar os dados do usuário."
-            showAlert = true
         }
-    }
     
     // Função para validar o formato do email
     private func isValidEmail(_ email: String) -> Bool {

@@ -32,11 +32,11 @@ struct ResetPasswordView: View {
             VStack(spacing: 16) {
                 // Nome de Usuário
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Nome de Usuário")
+                    Text("Email")
                         .font(.footnote)
                         .foregroundColor(.gray)
                     
-                    TextField("Digite seu nome de usuário", text: $username)
+                    TextField("Digite seu email", text: $username)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .autocapitalization(.none)
                 }
@@ -134,8 +134,8 @@ struct ResetPasswordView: View {
             return
         }
         
-        // Carregar os dados do Keychain usando o nome de usuário como chave
-        if let userData = KeychainHelper.load(key: username),
+        // Carregar os dados do Keychain usando o EMAIL como chave
+        if let userData = KeychainHelper.load(key: username), // Altere aqui para usar o email
            var decodedUserData = try? JSONDecoder().decode([String: String].self, from: userData) {
             let storedPassword = decodedUserData["password"] ?? ""
             
@@ -156,14 +156,14 @@ struct ResetPasswordView: View {
             // Atualizar a senha no Keychain
             decodedUserData["password"] = newPassword
             if let updatedUserData = try? JSONEncoder().encode(decodedUserData) {
-                let success = KeychainHelper.save(key: username, data: updatedUserData)
+                let success = KeychainHelper.save(key: username, data: updatedUserData) // Altere aqui para usar o email
                 if success {
                     print("Senha redefinida com sucesso!")
                     
                     // Salvar a nova senha no AppStorage se a checkbox estiver marcada
                     if saveNewPassword {
-                        let _ = UserDefaults.standard.set(newPassword, forKey: "savedPassword")
-                        let _ = UserDefaults.standard.set(username, forKey: "savedEmail")
+                        UserDefaults.standard.set(newPassword, forKey: "savedPassword")
+                        UserDefaults.standard.set(username, forKey: "savedEmail") // Altere aqui para usar o email
                     } else {
                         // Limpar os dados salvos se a checkbox estiver desmarcada
                         UserDefaults.standard.removeObject(forKey: "savedPassword")

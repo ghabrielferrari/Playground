@@ -14,6 +14,7 @@
 		665610922DAE8135006893C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610912DAE8135006893C0 /* LoginView.swift */; };
 		665610942DAE85DF006893C0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610932DAE85DF006893C0 /* RegisterView.swift */; };
 		665610962DAE8864006893C0 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665610952DAE8864006893C0 /* ResetPasswordView.swift */; };
+		666BE8D72DBA6C1C0037B938 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666BE8D62DBA6C1C0037B938 /* AuthViewModel.swift */; };
 		668EB7F92DA8360D00A309B6 /* PlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */; };
 		668EB7FD2DA8360F00A309B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668EB7FC2DA8360F00A309B6 /* Assets.xcassets */; };
 		668EB8002DA8360F00A309B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668EB7FF2DA8360F00A309B6 /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		665610912DAE8135006893C0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		665610932DAE85DF006893C0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		665610952DAE8864006893C0 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		666BE8D62DBA6C1C0037B938 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		668EB7F52DA8360D00A309B6 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundApp.swift; sourceTree = "<group>"; };
 		668EB7FC2DA8360F00A309B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +50,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		666BE8D02DBA67B80037B938 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				666BE8D32DBA6B890037B938 /* Screens */,
+				666BE8D12DBA67EC0037B938 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		666BE8D12DBA67EC0037B938 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6601049A2DB90AF7000A8137 /* SignInWithApple.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		666BE8D22DBA67FD0037B938 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6601049C2DB90DDA000A8137 /* KeychainHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		666BE8D32DBA6B890037B938 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				66298D482DB7D54E0021B745 /* MainAppView.swift */,
+				66CE34542DB7D18900B22680 /* ExplorerView.swift */,
+				665610912DAE8135006893C0 /* LoginView.swift */,
+				665610932DAE85DF006893C0 /* RegisterView.swift */,
+				665610952DAE8864006893C0 /* ResetPasswordView.swift */,
+				6611E1302DB122360012640D /* MapView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		666BE8D42DBA6BD00037B938 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		666BE8D52DBA6C030037B938 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				666BE8D62DBA6C1C0037B938 /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		668EB7EC2DA8360C00A309B6 = {
 			isa = PBXGroup;
 			children = (
@@ -67,19 +123,14 @@
 		668EB7F72DA8360D00A309B6 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				666BE8D52DBA6C030037B938 /* ViewModels */,
+				666BE8D42DBA6BD00037B938 /* App */,
+				666BE8D22DBA67FD0037B938 /* Helpers */,
+				666BE8D02DBA67B80037B938 /* Views */,
 				660104992DB90A95000A8137 /* Playground.entitlements */,
-				668EB7F82DA8360D00A309B6 /* PlaygroundApp.swift */,
-				66298D482DB7D54E0021B745 /* MainAppView.swift */,
-				665610912DAE8135006893C0 /* LoginView.swift */,
-				665610932DAE85DF006893C0 /* RegisterView.swift */,
-				665610952DAE8864006893C0 /* ResetPasswordView.swift */,
-				66CE34542DB7D18900B22680 /* ExplorerView.swift */,
-				6611E1302DB122360012640D /* MapView.swift */,
 				6611E1322DB123370012640D /* Info.plist */,
 				668EB7FC2DA8360F00A309B6 /* Assets.xcassets */,
 				668EB7FE2DA8360F00A309B6 /* Preview Content */,
-				6601049A2DB90AF7000A8137 /* SignInWithApple.swift */,
-				6601049C2DB90DDA000A8137 /* KeychainHelper.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -162,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666BE8D72DBA6C1C0037B938 /* AuthViewModel.swift in Sources */,
 				665610922DAE8135006893C0 /* LoginView.swift in Sources */,
 				665610942DAE85DF006893C0 /* RegisterView.swift in Sources */,
 				66298D492DB7D54E0021B745 /* MainAppView.swift in Sources */,

@@ -75,7 +75,7 @@ struct MainAppView: View {
         }
     }
     
-    // Função para fazer logout
+    // Função para fazer logouta
     private func logout() {
         print("Iniciando logout...")
         
